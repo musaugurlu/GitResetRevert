@@ -29,4 +29,15 @@ public class WeatherForecastController : ControllerBase
         })
         .ToArray();
     }
+
+    [HttpPost(Name = "PostWeatherForecast")]
+    public IActionResult Post()
+    {
+        return Ok(new WeatherForecast
+        {
+            Date = DateTime.UtcNow,
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        });
+    }
 }
